@@ -43,7 +43,7 @@ Du ska skapa ett REST API för 2 till 3 olika resurser men nu med Prisma ORM som
 6. Intallera och installera Prisma med postgressql som datasource-provider ```npm install prisma --save-dev``` och sedan ```npx prisma init --datasource-provider postgresql```  
 
 7. Börja definera dina modeller (d.v.s istället för tabell) i ```prisma.schema```. Skapa namn, datatyp och om attributet är primärnyckel, har en relation, är unikt eller har ett default-värde.
-   ![](Screenshot 2024-05-29 at 10.38.06.png)
+   !([Screenshot 2024-05-29 at 10.38.06.png](https://github.com/chasacademy-sandra-larsson/workshop-prisma-postgresql/blob/main/Screenshot%202024-05-29%20at%2010.38.06.png))
 
 9. För att kunna använda din databas utifrån ditt schema så måste du göra en migrering ```npx prisma migrate dev --name init```. Om du någon gång för förändring i ditt schema måste du köra detta kommando igen, fast utan init. Om detta steg lyckas så skapas ditt ```@prisma/client```-paket för att kunna använda Prisma Client API i din applikation
 
