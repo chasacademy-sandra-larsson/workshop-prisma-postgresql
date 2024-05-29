@@ -13,6 +13,7 @@ Du ska skapa ett REST API för 2 till 3 olika resurser men nu med Prisma ORM som
 
 3. Ska npm-projekt ```npm init -y``` 
 
+
 	Installera dependencies ```typescript ts-node @types/node --save-dev``` 
 	samt andra dependencies som hör till node-js/express-backend ```npm install express mysql2   	bcrypt body-parser cors``` samt ```npm i nodemon --save-dev```
 	(dotenv för .env-filer sköter Prisma automatiskt)
@@ -39,16 +40,15 @@ Du ska skapa ett REST API för 2 till 3 olika resurser men nu med Prisma ORM som
 ```
 
 5. Skapa en PostgreSQL-databas på [render.com](https://render.com/). Välj Getting started => New => PostgreSQL o.s.v. Du hämtar databas-urlen under "External Database URL". Denna ska ligga i .env-filen under DATABASE_URL. Kom ihåg att ha en .gitignore som ignorerar .env så att denna INTE pushas till ett repo.
+	
 
 6. Intallera och installera Prisma med postgressql som datasource-provider ```npm install prisma --save-dev``` och sedan ```npx prisma init --datasource-provider postgresql```  
 
-7. Börja definera dina modeller (d.v.s istället för tabell) i ```prisma.schema```. Skapa namn, datatyp och om attributet är primärnyckel, har en relation, är unikt eller har ett default-värde.
-   
-   ![Modell i Prisma](https://github.com/chasacademy-sandra-larsson/workshop-prisma-postgresql/blob/main/Screenshot%202024-05-29%20at%2010.38.06.png)
+7. Börja definera dina modeller (d.v.s istället för tabell) i ```prisma.schema```. Skapa namn, datatyp och om attributet är primärnyckel, har en relation, är unikt eller har ett default-värde. ![](Screenshot 2024-05-29 at 10.38.06.png)
 
-9. För att kunna använda din databas utifrån ditt schema så måste du göra en migrering ```npx prisma migrate dev --name init```. Om du någon gång för förändring i ditt schema måste du köra detta kommando igen, fast utan init. Om detta steg lyckas så skapas ditt ```@prisma/client```-paket för att kunna använda Prisma Client API i din applikation
+8. För att kunna använda din databas utifrån ditt schema så måste du göra en migrering ```npx prisma migrate dev --name init```. Om du någon gång för förändring i ditt schema måste du köra detta kommando igen, fast utan init. Om detta steg lyckas så skapas ditt ```@prisma/client```-paket för att kunna använda Prisma Client API i din applikation
 
-10. Nu kan du börja skriva queries i din databas för dina migrerade modeller! Först måste du installera ```npm install @prisma/client```. Man bör importera Prisma Client endast en gång, använd exempelvis den fil där vi sist skötte databasuppkopplingen till MAMP.
+9. Nu kan du börja skriva queries i din databas för dina migrerade modeller! Först måste du installera ```npm install @prisma/client```. Man bör importera Prisma Client endast en gång, använd exempelvis den fil där vi sist skötte databasuppkopplingen till MAMP.
 
 ```
 // connect.ts
@@ -90,13 +90,22 @@ nodejs-mysql-rest-socialmedia
 
 ```
 
+
+
+
+
 ### *Tanken är att du bygger vidare på denna kod nästa vecka och till inlämningsuppgiften!*
 
 
 # 👩🏽‍💻 Extra
 
-
-
+* "Mata" din databas med information som passar ditt Prisma schema. Detta kallas för att "seed:a", så skapa en ```seed.ts``` för engångskörning, [se denna som inspiration](https://github.com/chasacademy-sandra-larsson/workshop-prisma-postgresql/blob/main/seed.ts). Installera och importera Faker från [https://fakerjs.dev/](https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting) som kan generera fake men realistisk data. 
+* Utforska sök-  och filtrering i Prisma exempelvis i findMany-request. Dokumentation: [https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting
+](https://www.prisma.io/docs/orm/prisma-client/queries/filtering-and-sorting)
+Här ska du alltså använda query-parametrar!
+* Pagination, d.v.s "gå till 100-200 nästa produkter" [https://www.prisma.io/docs/orm/prisma-client/queries/pagination](https://www.prisma.io/docs/orm/prisma-client/queries/pagination)
+* Utöka med fler resurser (models). Tänk på databasdesign one-to-one, one-to-many och many-to-many för att skapa ett schema som fungerar att skala upp. Mer om relationella queries: [https://www.prisma.io/docs/orm/prisma-client/queries/relation-queries
+](https://www.prisma.io/docs/orm/prisma-client/queries/relation-queries)
 
 # 💬 Diskutera/Bra att kunna
 
